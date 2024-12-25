@@ -9,9 +9,9 @@ console = Console()
 
 mongoClient = pymongo.MongoClient("localhost", 27017)
 
-coll = mongoClient["test-database"]["test-collection"]
+coll = mongoClient["project3-database"]["2024-07-26"]
 
-analysis_coll = mongoClient["test-database"]["test-analysis"]
+analysis_coll = mongoClient["project3-database"]["2024-07-26-analysis"]
  
 
 List_HNX30 : list = ["CAP","CEO","DHT","DTD","DVM","DXP","HLD","HUT","IDC","IDV"
@@ -390,10 +390,27 @@ def infoSYM2( sym: str):
     Svol: int = 0
     for value in Slist:
         Svol += int(value[1])
+        
+    MaxB = max(Blist, key=lambda x: x[1])
+    MinS = min(Slist, key=lambda x: x[1])
     
+    console.log(MaxB)
+    console.log(MinS)
+    ddsb = ""
+    
+    if float(Bvol/(Svol * -1 )) >= 1.7:
+        ddsb = 'SELL'
+    elif float((Svol * -1 )/Bvol) >= 1.7:
+        ddsb = 'BUY'
+    else:
+        ddsb = 'KEEP'
+        
     return [
         {'info':'Tổng khối lượng mua', 'value': Bvol},
         {'info':'Tổng khối lượng bán', 'value': Svol},
+        {'info':'Đánh giá chung', 'value': ddsb},
+        {'info':'Mức giá nên MUA','value': (MinS[0] )if ddsb == 'BUY' else '-' },
+        {'info':'Mức giá nên BÁN','value': (MaxB[0] )if ddsb == 'SELL' else '-'},
     ]
        
 def tytrongGia(df : pd.DataFrame):

@@ -6,9 +6,9 @@ console = Console()
 
 mongoClient = pymongo.MongoClient("localhost", 27017)
 
-coll = mongoClient["test-database"]["test-collection"]
+coll = mongoClient["project3-database"]["2024-07-26"]
 
-res_coll = mongoClient["test-database"]["test-analysis"]
+res_coll = mongoClient["project3-database"]["2024-07-26-analysis"]
 
 List_HNX30 : list = ["CAP","CEO","DHT","DTD","DVM","DXP","HLD","HUT","IDC","IDV"
      ,"L14","L18","LAS","LHC","MBS","NTP","NVB","PLC","PSD","PVB"

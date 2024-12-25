@@ -9,7 +9,7 @@ from time import process_time
 mongo_client = pymongo.MongoClient("localhost", 27017)
 
 
-coll = mongo_client["test-database"]["test-collection"]
+coll = mongo_client["project3-database"]["2024-07-26"]
 
 insertdata = []
 
@@ -125,8 +125,8 @@ class SYM:
     
 
 if __name__ == "__main__":
-    df_AISEC = pd.read_csv(r'D:\CFI\SAMPLE DATA\AISEC-HNX_2024-07-26.csv', header= None)
-    df_VPS = pd.read_csv(r'D:\CFI\SAMPLE DATA\VPS-HNX_2024-07-26.csv', header= None)
+    df_AISEC = pd.read_csv(r'D:\DAI HOC\PROJ3\SAMPLE DATA\AISEC-HNX_2024-07-26.csv', header= None)
+    df_VPS = pd.read_csv(r'D:\DAI HOC\PROJ3\SAMPLE DATA\VPS-HNX_2024-07-26.csv', header= None)
     
     data = pd.concat([ df_AISEC , df_VPS] , axis= 'index').sort_values(0)
     
